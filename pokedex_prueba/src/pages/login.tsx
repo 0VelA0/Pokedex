@@ -30,6 +30,7 @@ const Title = styled.h2`
     margin-bottom: 90px;
     font-family: 'Inter', sans-serif;
     color: #333333;
+    align-self: center;
 
 `;
 

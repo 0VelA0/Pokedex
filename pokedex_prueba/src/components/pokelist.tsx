@@ -108,7 +108,7 @@ export default function PokeList({Pokemons, page, setPage}:props){
                                 {p.abilities.map((abilityInfo) => abilityInfo.ability.name).join(", ")}
                             </Td>
                             <Td>
-                                <ShinyButton onClick={(e) => {e.stopPropagation, setSelectedPokemon(p)}}>Ver Shiny</ShinyButton>
+                                <ShinyButton onClick={(e) => {e.stopPropagation(), setSelectedPokemon(p)}}>Ver Shiny</ShinyButton>
                             </Td>
                         </Tr>
                     ))}

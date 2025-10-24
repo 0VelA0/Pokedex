@@ -58,7 +58,7 @@ export default function PokemonCard({ pokemon }: Props) {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate(`/pokemon/${pokemon.name}`);
+        if (!showModal) navigate(`/pokemon/${pokemon.name}`);
     };
 
     return (
@@ -76,7 +76,7 @@ export default function PokemonCard({ pokemon }: Props) {
             </ShinyButton>
 
             {showModal && (
-                <ShinyModal pokemon={pokemon} onClose={() => setShowModal(false)} />
+                <ShinyModal pokemon={pokemon} onClose={() => { setShowModal(false)}} />
             )}
         </Card>
   );

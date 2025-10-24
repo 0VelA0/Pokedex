@@ -16,7 +16,10 @@ const Top = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 `;
-
+const Top_center = styled.div`
+    display: grid;
+    place-items: center;
+`;
 const Card = styled.div`
     background-color: #f9fafb;
     border-radius: 8px;
@@ -101,16 +104,7 @@ export default function DetailPage() {
     return (
         <Container>
             <BackButton onClick={() => navigate(-1)}>Volver</BackButton>
-            <Top>
-                <Card>
-                    <Title>{pokemon.name} (#{pokemon.id})</Title>
-                    <p>
-                        <b>Tipos:</b> {pokemon.types.map(t => t.type.name).join(", ")}
-                    </p>
-                    <p>
-                        <b>Descripcion:</b> {description}
-                    </p>
-                </Card>
+            <Top_center>
 
                 <Card>
                     <Subtitle>Galeria</Subtitle>
@@ -121,6 +115,18 @@ export default function DetailPage() {
                         <img src={pokemon.sprites.back_shiny} alt={`${pokemon.name} back shiny`} />
                     </Gallery>
                 </Card>
+            </Top_center>
+            <Top>    
+                <Card>
+                    <Title>{pokemon.name} (#{pokemon.id})</Title>
+                    <p>
+                        <b>Tipos:</b> {pokemon.types.map(t => t.type.name).join(", ")}
+                    </p>
+                    <p>
+                        <b>Descripcion:</b> {description}
+                    </p>
+                </Card>
+
             </Top>
 
             <Top>

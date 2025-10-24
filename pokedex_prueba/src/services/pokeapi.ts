@@ -22,7 +22,7 @@ export const getPokemonDescription = async (name: string) => {
   const { data } = await axios.get(`${API_URL}/pokemon-species/${name.toLowerCase()}`);
   
   const flavorText = data.flavor_text_entries.find(
-    (entry: any) => entry.language.name === 'en' 
+    (entry: any) => entry.language.name === 'es' 
   )?.flavor_text?.replace(/\f|\n|\r/g, ' ') || 'Description not available.';
 
   return {

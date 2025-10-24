@@ -12,25 +12,31 @@ interface props{
 }
 
 const Table = styled.table`
-    width: 100%;  
+    width: 90%;
+    border-collapse: collapse;
+    margin: auto;
+    
 `;
 
 const Thead = styled.thead`
     background-color: #f3f4f6;
-    border-bottom: 2px solid #000000ff;
+    
 `;
 
 const Th = styled.th`
     padding: 20px;
     text-align: center;
-    
 `;
 
-const Tr = styled.tr`
+const Tr_hover = styled.tr`
     
     &:hover {
         background-color: #f9fafb;
     }
+`;
+const Tr = styled.tr`
+    
+
 `;
 
 const Td = styled.td`
@@ -95,7 +101,7 @@ export default function PokeList({Pokemons, page, setPage}:props){
                 </Thead>
                 <tbody>
                     {Pokemons.map((p) => (
-                        <Tr key={p.id} onClick={()=>navigate(`/pokemon/${p.name}`)} style={{cursor: 'pointer'}}>
+                        <Tr_hover key={p.id} onClick={()=>navigate(`/pokemon/${p.name}`)} style={{cursor: 'pointer'}}>
                             <Td>{p.id}</Td>
                             <Td>{p.name}</Td>
                             <Td>
@@ -110,7 +116,7 @@ export default function PokeList({Pokemons, page, setPage}:props){
                             <Td>
                                 <ShinyButton onClick={(e) => {e.stopPropagation(), setSelectedPokemon(p)}}>Ver Shiny</ShinyButton>
                             </Td>
-                        </Tr>
+                        </Tr_hover>
                     ))}
                 </tbody>
             </Table>

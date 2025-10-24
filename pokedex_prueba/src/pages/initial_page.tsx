@@ -92,6 +92,28 @@ const PokemonGrid = styled.div`
   gap: 20px;
 `;
 
+const Pagesdiv = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+`;
+const PageButton = styled.button`
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+
+    &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+`;
+
+const PageInfo = styled.span`
+    font-weight: 500;
+`;
+
 export default function Initial_Page() {
   const [pokemons, setPokemons] = useState<Pokemons[]>([]);
   const [viewMode, setViewMode] = useState<"list" | "grid">("list");
@@ -127,7 +149,7 @@ export default function Initial_Page() {
     <Container>
       <Header>
         <Title>Pokedex</Title>
-        <LogoutButton onClick={() => dispatch(logout())}>Logout</LogoutButton>
+        <LogoutButton onClick={() => dispatch(logout())}>Cerrar Sesion</LogoutButton>
       </Header>
       <DivSearch>
         <InputSearch 
@@ -154,11 +176,22 @@ export default function Initial_Page() {
       {viewMode === "list" ? (
         <PokemonList Pokemons={pokemons} page={page} setPage={setPage} />
       ) : (
+        <>
         <PokemonGrid>
           {pokemons.map((pokemon) => (
             <PokemonCard key={pokemon.id} pokemon={pokemon} />
           ))}
         </PokemonGrid>
+            <Pagesdiv>
+                <PageButton disabled={page === 1} onClick={() => setPage(page - 1)}>
+                    ⬅
+                </PageButton>
+                <PageInfo>Página {page}</PageInfo>
+                <PageButton onClick={() => setPage(page + 1)}>
+                    ➡
+                </PageButton>
+            </Pagesdiv>
+        </>
       )}
       
       </Container>

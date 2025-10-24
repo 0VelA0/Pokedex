@@ -57,7 +57,7 @@ const InputSearch = styled.input`
 `;
 
 const ButtonGroup = styled.div`
-  margin-left:10px;
+  margin-left:900px;
   display:flex;
   gap: 5px;
 `;
@@ -88,7 +88,7 @@ const ViewButton = styled.button<{$active: boolean}>`
 
 const PokemonGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 `;
 
@@ -119,7 +119,7 @@ export default function Initial_Page() {
         const data = await getPokemonByName(e.target.value);
         setPokemons([data]);
       } catch (error) {
-        console.error("Pokemon not found");
+        console.error("Pokemon no encontrado");
       }
     }
   };
@@ -132,7 +132,7 @@ export default function Initial_Page() {
       <DivSearch>
         <InputSearch 
           type="text"
-          placeholder="Search Pokemon by name"
+          placeholder="Buscar Pokemon por nombre"
           value={search}
           onChange={handleSearch}
         />
@@ -141,13 +141,13 @@ export default function Initial_Page() {
             $active={viewMode === "list"}
             onClick={() => setViewMode("list")}
           >
-            List View
+            Lista
           </ViewButton>
           <ViewButton 
             $active={viewMode === "grid"}
             onClick={() => setViewMode("grid")}
           >
-            Grid View
+            Cuadricula
           </ViewButton>
         </ButtonGroup>
       </DivSearch>

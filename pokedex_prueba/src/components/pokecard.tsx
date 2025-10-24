@@ -37,6 +37,11 @@ const PokemonType = styled.p`
   color: #4b5563;
 `;
 
+const Pokemonabilities = styled.p`
+  font-size: 0.875rem;
+  color: #4b5563;
+`;
+
 const ShinyButton = styled.button`
   margin-top: 0.75rem;
   background-color: #374151;
@@ -65,6 +70,7 @@ export default function PokemonCard({ pokemon }: Props) {
         <Card onClick={handleNavigate}>
             <PokemonImage src={pokemon.sprites.front_default} alt={pokemon.name} />
             <PokemonName>{pokemon.name}</PokemonName>
+            <Pokemonabilities>{pokemon.abilities.map((a) => a.ability.name).join(", ")}</Pokemonabilities>
             <PokemonType>{pokemon.types.map((t) => t.type.name).join(", ")}</PokemonType>
             <ShinyButton
                 onClick={(e) => {

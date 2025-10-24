@@ -90,7 +90,7 @@ export default function PokeList({Pokemons, page, setPage}:props){
                         <Th>Vista Previa</Th>
                         <Th>Tipos</Th>
                         <Th>Habilidades</Th>
-                        <Th></Th>
+                        
                     </Tr>
                 </Thead>
                 <tbody>
@@ -117,11 +117,11 @@ export default function PokeList({Pokemons, page, setPage}:props){
 
             <Pagesdiv>
                 <PageButton disabled={page === 1} onClick={() => setPage(page - 1)}>
-                    ⬅️
+                    ⬅
                 </PageButton>
                 <PageInfo>Página {page}</PageInfo>
                 <PageButton onClick={() => setPage(page + 1)}>
-                    ➡️
+                    ➡
                 </PageButton>
             </Pagesdiv>
 

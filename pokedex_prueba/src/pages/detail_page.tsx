@@ -16,6 +16,8 @@ const Top = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 `;
+
+
 const Top_center = styled.div`
     display: grid;
     place-items: center;

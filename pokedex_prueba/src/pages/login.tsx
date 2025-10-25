@@ -67,10 +67,10 @@ export const Login_screen: React.FC = () => {
         e.preventDefault();
         // Simple validation
         if (username === "admin" && password === "password") {
-            alert("Login successful");
+            alert("Inicio de sesion exitoso");
             dispatch(login(username));
         } else {
-            setError("Invalid username or password");
+            setError("Usuario o contraseña incorrectos.");
         }
 
         if (!username || !password) {
@@ -86,13 +86,13 @@ export const Login_screen: React.FC = () => {
                 <Title>Pokedex</Title>
                 <Input
                     type="text"
-                    placeholder="Username"
+                    placeholder="Usuario"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <Input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />

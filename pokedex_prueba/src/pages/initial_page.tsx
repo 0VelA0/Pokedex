@@ -7,6 +7,7 @@ import type {Pokemons} from "../interface/pokemon";
 import type { AppDispatch } from "../store";
 import PokemonList from "../components/pokelist";
 import PokemonCard from "../components/pokecard";
+import ShinyModal from "../components/shinyModal";
 
 const Container = styled.div`
   padding: 20px;
@@ -121,6 +122,7 @@ export default function Initial_Page() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const dispatch = useDispatch<AppDispatch>();
+  const [selectedPokemon, setSelectedPokemon] = useState<Pokemons | null>(null);
 
   const limit = 10;
   const offset = (page - 1) * limit;
@@ -180,9 +182,15 @@ export default function Initial_Page() {
         <>
         <PokemonGrid>
           {pokemons.map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            <PokemonCard key={pokemon.id} pokemon={pokemon} onShinyClick={() => setSelectedPokemon(pokemon)}  />
           ))}
         </PokemonGrid>
+        {selectedPokemon && (
+          <ShinyModal 
+            pokemon={selectedPokemon} 
+            onClose={() => setSelectedPokemon(null)} 
+          />
+        )}
             <Pagesdiv>
                 <PageButton disabled={page === 1} onClick={() => setPage(page - 1)}>
                     ⬅

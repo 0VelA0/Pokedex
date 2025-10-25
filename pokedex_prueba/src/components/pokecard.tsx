@@ -1,12 +1,11 @@
-import { useState } from "react";
 import styled from "styled-components";
 import type { Pokemons } from "../interface/pokemon";
-import ShinyModal from "./shinyModal";
 import { useNavigate } from "react-router-dom";
 import pokedexBg from "/src/assets/pokedex.png";
 
 interface Props {
   pokemon: Pokemons;
+  onShinyClick?: () => void;
 }
 
 const Card = styled.div`
@@ -16,10 +15,8 @@ const Card = styled.div`
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-
-
   
-  padding: 4.2rem;
+  padding: 5rem;
   border-radius: 1rem;
   box-shadow: 
     0 2px 6px #00000063,
@@ -27,6 +24,7 @@ const Card = styled.div`
   text-align: center;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  overflow: hidden;
 
   &:hover {
     box-shadow: 0 4px 12px rgba(207, 47, 47, .85);
@@ -54,27 +52,23 @@ const Pokemonabilities = styled.p`
 `;
 
 const ShinyButton = styled.button`
-  margin-top: 0.75rem;
-  background-color: #374151;
+  background: transparent;
   color: white;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
   border: none;
   border-radius: 0.375rem;
   cursor: pointer;
   transition: background-color 0.2s;
 
-  &:hover {
-    background-color: #1f2937;
-  }
 `;
 
-export default function PokemonCard({ pokemon }: Props) {
-    const [showModal, setShowModal] = useState(false);
+export default function PokemonCard({ pokemon, onShinyClick }: Props) {
+
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        if (!showModal) navigate(`/pokemon/${pokemon.name}`);
+      navigate(`/pokemon/${pokemon.name}`);
     };
 
     return (
@@ -86,15 +80,11 @@ export default function PokemonCard({ pokemon }: Props) {
             <ShinyButton
                 onClick={(e) => {
                 e.stopPropagation();
-                setShowModal(true);
+                onShinyClick?.();
                 }}
             >
             Shiny
             </ShinyButton>
-
-            {showModal && (
-                <ShinyModal pokemon={pokemon} onClose={() => { setShowModal(false)}} />
-            )}
         </Card>
   );
 }

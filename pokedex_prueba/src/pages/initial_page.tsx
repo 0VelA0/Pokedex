@@ -10,6 +10,7 @@ import PokemonCard from "../components/pokecard";
 
 const Container = styled.div`
   padding: 20px;
+  background: linear-gradient(to bottom, #ffffffff 100%, #00000008 0%);
 `;
 
 const Header = styled.div`
@@ -194,6 +195,6 @@ export default function Initial_Page() {
         </>
       )}
       
-      </Container>
+    </Container>
   );
 };

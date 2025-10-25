@@ -3,22 +3,33 @@ import styled from "styled-components";
 import type { Pokemons } from "../interface/pokemon";
 import ShinyModal from "./shinyModal";
 import { useNavigate } from "react-router-dom";
+import pokedexBg from "/src/assets/pokedex.png";
 
 interface Props {
   pokemon: Pokemons;
 }
 
 const Card = styled.div`
-  background: white;
-  padding: 1rem;
+  position: relative;
+  background-image: url(${pokedexBg}),
+  linear-gradient(to bottom, #8bcbf3ff 0%, #0080ffff 100%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+
+  
+  padding: 4.2rem;
   border-radius: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 2px 6px #00000063,
+    inset 0 -2px 4px #e9e1e1ff;
   text-align: center;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(207, 47, 47, .85);
   }
 `;
 
